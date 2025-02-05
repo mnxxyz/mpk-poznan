@@ -1,0 +1,247 @@
+//out: style.css, strictMath: true, compress: true
+
+@bgrColor: #FAFAFA; //kolo tła
+@color1: #623DE3; //kolor1
+@color2: #FFD303; //kolor2
+@color3: #111111; //czarny
+@white: #FFFFFF;
+@br1: 1440px; //breakpoint 1
+@br2: 980px; //breakpoint 2
+@br3: 750px; //breakpoint 3
+@br4: 460px; //breakpoint 3
+@font1: 'NUNITO'; //font1
+@paddingL: 2em; //domyslny boczny padding elemntow
+@defFSIZE: 10px; //podstawowy rozmiar litery
+@maxSize: 1120px; //domyślna szerokość blokow
+//
+//IMPORTS
+//
+@import "fonts.less";
+//
+//MIXINS
+//
+
+.max-size(@max: @maxSize, @paddingL_: @paddingL) { 
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    width: 100%;
+    max-width: @max;
+    height: auto;
+    margin: auto;
+    position: relative;
+    padding: 0 @paddingL_;
+}
+.full-size() {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    position: relative;
+}
+.flexVerticalAlign() { 
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.brParam(@param, @s1, @s2, @s3, @s4: @s3) { 
+    @media (max-width: @br1) {
+        @{param}: @s1;
+    }
+    @media (max-width: @br2) {
+        @{param}: @s2;
+    }
+    @media (max-width: @br3) {
+        @{param}: @s3;
+    }
+    @media (max-width: @br4) {
+        @{param}: @s4;
+    }
+}
+
+.spaceBottom(@m: 10em, @f1: 0.9, @f2: 0.8, @f3: 0.6) {
+    @space: @m;
+    margin-bottom: @space;
+    .brParam(margin-bottom, (@space*@f1), (@space*@f2), (@space*@f3));
+}
+
+.transitions(){
+    &, & > * {
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+        transition-property: width, max-width, height, margin, padding, font-size, line-height, color, background-color, background-size, background-position, top, right, border;
+    }
+}
+
+
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: @bgrColor;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+
+.all {
+
+/////////////////////////////
+    > * {
+        &, * {
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 0;
+            font-size: @defFSIZE;
+            font-family: @font1, sans-serif;
+            color: @color3;
+            line-height: 1.5em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            .brParam(font-size, @defFSIZE, ((@defFSIZE*0.95)), ((@defFSIZE*0.9)), ((@defFSIZE*0.85)));
+            
+        }
+    }
+    hr {
+        display: block;
+        border: 0 none;
+    }
+    div, li {
+        transition: all 200ms;
+    }
+    div, span {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: inherit;
+        li {
+            font-size: inherit;
+        }
+    }
+    span {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        font-family: inherit;
+    }
+    a {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        text-decoration: none;
+        font-family: inherit;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+    }
+    div > a {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+    }
+    * {
+        font-family: @font1;
+        text-align: center;
+    }
+    /////////////////////////////
+    div.projekt {
+        width: 100%;
+        margin: auto;
+        box-sizing: border-box;
+        padding: @paddingL;
+        padding-top: 12em;
+        .brParam(padding-top, 12em, 9em, 6em);
+        > .r1 {
+            padding-bottom: 5em;
+            .brParam(padding-bottom, 5em, 4em, 3em);
+            p {
+                font-size: 3em;
+                color: #111111;
+                letter-spacing: 0;
+                text-align: center;
+                line-height: 1.4em;
+                font-weight: bold;
+                max-width: 860px;
+                margin: 0 auto;
+                .brParam(font-size, 3em, 2.5em, 2em);
+            }
+            p:first-of-type {
+                font-size: 4.8em;
+                line-height: 1.2em;
+                margin-bottom: 0.5em;
+                max-width: 1030px;
+                .brParam(font-size, 4.8em, 3.6em, 2.5em);
+            }
+        }
+        > .r2 {
+            h4 {
+                font-size: 1.6em;
+                color: #999999;
+                line-height: 1.3em;
+                margin-bottom: 1.7em;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+            margin-bottom: 5em;
+            .brParam(margin-bottom, 5em, 4em, 3em);
+            > div {
+                display: inline-block;
+                width: 100%;
+                max-width: 13em;
+                margin-bottom: 2em;
+                img {
+                    max-width: 6.2em;
+                    height: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.21);
+                    margin-bottom: 1em;
+                }
+                p {
+                    font-size: 1.5em;
+                    color: #111111;
+                    line-height: 1.3em;
+                    font-weight: normal;
+                }
+            }
+        }
+        > .r3 {
+            margin: auto;
+            width: 100%;
+            max-width: 1600px;
+            background: #FFFFFF;
+            box-shadow: 0 0.8em 3em 0 rgba(0,0,0,0.23);
+            img, video {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: auto 0;
+                
+            }
+        }
+    }
+}
+    
+    
